@@ -61,4 +61,15 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * Should display "Developer" for the user name.
 
+# Module 4: When typing letters instead of numbers, 
+letters appear
+
+## Test Steps
+
+1. Build and run CiCo
+2. Enter abcd
+
+## Expected results
+* Should ignore non-numerical input
+
 
