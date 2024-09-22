@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.text.NumberFormat;
+import java.text.ParsePosition;
 import java.util.TimerTask;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -32,6 +34,16 @@ public class Main {
   private static final long TIMEOUT_PANEL_MS = 10 * 1000;
   private static final int TIMEOUT_STATEMENT_S = 5;
 
+  // Check for is numeric ngc
+  public static boolean isNumeric(String str) {
+    for (int i = 0; i < str.length(); i++) {
+      if (!Character.isDigit(str.charAt(i))) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   // Internal classes ///////////////////////////////////////////////////////////
   // InputFilter manages user input to the card number field.
   private static class InputFilter extends DocumentFilter {
@@ -41,23 +53,29 @@ public class Main {
     public void insertString(FilterBypass fb, int offset, String stringToAdd, AttributeSet attr)
         throws BadLocationException
     {
-      if (fb.getDocument() != null) {
-        super.insertString(fb, offset, stringToAdd, attr);
+      //Added check for is numeric ngc
+      if(isNumeric(stringToAdd)) {
+          if (fb.getDocument() != null) {
+          super.insertString(fb, offset, stringToAdd, attr);
+        }
+        else {
+          Toolkit.getDefaultToolkit().beep();
+        }
       }
-      else {
-        Toolkit.getDefaultToolkit().beep();
-      }
+
+
     }
 
     @Override
     public void replace(FilterBypass fb, int offset, int lengthToDelete, String stringToAdd, AttributeSet attr)
-        throws BadLocationException
-    {
-      if (fb.getDocument() != null) {
-        super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
-      }
-      else {
-        Toolkit.getDefaultToolkit().beep();
+        throws BadLocationException {
+      //Added check for is numeric ngc
+      if (isNumeric(stringToAdd)) {
+        if (fb.getDocument() != null) {
+          super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
+        } else {
+          Toolkit.getDefaultToolkit().beep();
+        }
       }
     }
   }
