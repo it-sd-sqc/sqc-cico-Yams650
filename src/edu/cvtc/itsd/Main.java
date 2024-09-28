@@ -72,6 +72,11 @@ public class Main {
   // Revert to the main panel after a button press ////////////////////////////
   public static class Handler implements ActionListener {
     public void actionPerformed(ActionEvent evt) {
+      // Added to clear timeout ngc
+      if(timeout != null){
+        timeout.cancel();
+        timeout = null;
+      }
       Main.doneProcessing();
     }
   }
@@ -106,6 +111,7 @@ public class Main {
   static JLabel labelUser;
   static JLabel labelState;
   static JButton buttonAcknowledge;
+
 
   // Timer variables //////////////////////////////////////////////////////////
   static java.util.Timer timer;
@@ -201,11 +207,14 @@ public class Main {
 
   // Return to the main panel /////////////////////////////////////////////////
   private static void doneProcessing() {
-    timeout.cancel();
-    timeout = null;
-    fieldNumber.setText("");
-    ((CardLayout)deck.getLayout()).show(deck, CARD_MAIN);
-    fieldNumber.grabFocus();
+    //Error due to time not being null when button clicked, needed if to check for timeout = null ngc
+    if(timeout != null) {
+      timeout.cancel();
+      timeout = null;
+    }
+      fieldNumber.setText("");
+      ((CardLayout) deck.getLayout()).show(deck, CARD_MAIN);
+      fieldNumber.grabFocus();
   }
 
   // Display name and new status //////////////////////////////////////////////
@@ -288,6 +297,17 @@ public class Main {
     labelState.setAlignmentX(JComponent.CENTER_ALIGNMENT);
     labelState.setForeground(Color.magenta);
     panelStatus.add(labelState);
+
+    // Confirm Button to allow users to skip timeout ////////////////////// ngc
+    JButton confirm = new JButton("Confirm");
+    confirm.addActionListener(handler);
+    confirm.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+    confirm.setForeground(Color.green);
+    // Utilize Handler Event Listener // ngc
+    confirm.addActionListener(new Handler());
+    panelStatus.add(confirm);
+    panelStatus.add(Box.createVerticalGlue());
+
 
     panelStatus.add(Box.createVerticalGlue());
 
