@@ -72,4 +72,15 @@ letters appear
 ## Expected results
 * Should ignore non-numerical input
 
+---------------------------------------------------------------
+# Module 5
 
+## Expected Results
+
+* A button should be pressed to skip the timeout time
+
+1. Build and run CiCo
+2. Enter card number: 00000000
+3. Wait for timer to time out
+4. Enter card number
+5. Click Confirm button
