@@ -1,5 +1,6 @@
 Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command line. You can otherwise use your IDE to build and run CiCo.
 
+---------------------------------------------------------------
 # Module 2: Sample test for the happy path. 
 
 ## Test steps
@@ -11,6 +12,7 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 * The status panel should appear after step 2.
 * The main panel should appear after step 3.
 
+---------------------------------------------------------------
 # Module 2: Sample test for invalid card numbers.
 
 ## Test steps
@@ -22,6 +24,7 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 * The error panel should appear after step 2.
 * The main panel should appear after step 3.
 
+---------------------------------------------------------------
 # Module 2: Help users recognize, diagnose, and recover from errors
 
 ## Test steps
@@ -31,6 +34,7 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * The panel should display "Please show your card to staff to validate." after step 2.
 
+---------------------------------------------------------------
 # Module 2: Help and documentation
 
 ## Test steps
@@ -39,7 +43,7 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * The version number should be displayed after "CiCo" at the bottom.
 
-
+---------------------------------------------------------------
 # Module 3: Visibility of system status 
 
 ## Test steps
@@ -52,6 +56,7 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 * Should display "Checked IN" after step 2.
 * Should display "Checked OUT" after step 4.
 
+---------------------------------------------------------------
 # Module 3: Match between system and the real world
 
 ## Test steps
@@ -61,6 +66,7 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * Should display "Developer" for the user name.
 
+---------------------------------------------------------------
 # Module 4: When typing letters instead of numbers, 
 letters appear
 
@@ -84,3 +90,13 @@ letters appear
 3. Wait for timer to time out
 4. Enter card number
 5. Click Confirm button
+
+---------------------------------------------------------------
+# Module 6
+
+# Test Steps
+1. Build and run CiCo
+2. Enter card number: 00000000
+
+## Expected Results
+* Should detect eight digits and submit automatically
