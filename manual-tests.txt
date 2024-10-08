@@ -92,6 +92,17 @@ letters appear
 5. Click Confirm button
 
 ---------------------------------------------------------------
+
+# Module 6: Call Status panel once 8 digits are entered. 
+
+## Test steps
+1. Type in 00000000
+
+## Expected results
+* The main panel should transition to the status panel once 8 digits are entered. 
+
+---------------------------------------------------------------
+
 # Module 6
 
 # Test Steps
@@ -100,3 +111,4 @@ letters appear
 
 ## Expected Results
 * Should detect eight digits and submit automatically
+
